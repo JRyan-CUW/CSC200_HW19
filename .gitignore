@@ -1,0 +1,52 @@
+import java.util.Random;
+
+
+public class Driver 
+{
+	public static void main(String[] args)
+	{
+		Integer[] arrayOfNumbers = new Integer[10];
+		Driver.fillArrayWithRandomInts(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+		Driver.sortArray(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+	}
+	
+	//Homework
+	static void sortArray(Integer[] values)
+	{
+	    for (int gap = values.length / 2; gap > 0; 
+	            gap = gap == 2 ? 1 : (int) (gap / 2.2) )            
+	        {
+	            for (int i = gap; i < values.length; i++)
+	            {
+	                Integer tmp = values[i];
+	                int j = i;
+
+	                for (; j >= gap && tmp.compareTo(values[j-gap]) < 0; j -= gap)
+	                {
+	                    values[j] = values[j - gap];
+	                }
+	                values[j] = tmp;
+	            }
+	        }
+	}
+	
+	static void fillArrayWithRandomInts(Integer[] ar)
+	{
+		Random r = new Random();
+		for(int i = 0; i < ar.length; i++)
+		{
+			ar[i] = r.nextInt(101);
+		}
+	}
+	
+	static void printIntArray(Integer[] ar)
+	{
+		for(int i = 0; i < ar.length; i++)
+		{
+			System.out.print(ar[i] + " ");
+		}
+		System.out.println();
+	}
+}
